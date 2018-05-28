@@ -282,7 +282,7 @@ class DynamikLayoutManager(spanCount: Int) : RecyclerView.LayoutManager() {
                 scrollBy(spanBottomMax - bottomBorder, recycler, state)
             }
             // Finally, we layout disappearing views.
-            layoutDisappearingViews(recycler, state)
+            layoutDisappearingViews(recycler!!)
         } else { // There are no removed items out of the upper bound.
             // Just set layout parameters and fill the visible area.
             mCurrentPosition = firstAttachedItemPosition
@@ -676,7 +676,7 @@ class DynamikLayoutManager(spanCount: Int) : RecyclerView.LayoutManager() {
     }
 
     // Lay out disappearing views from the last one to the first one
-    private fun layoutDisappearingViews(recycler: RecyclerView.Recycler?, state: RecyclerView.State) {
+    private fun layoutDisappearingViews(recycler: RecyclerView.Recycler) {
         val iterator = disappearingViewCache!!.keys.iterator()
         while (iterator.hasNext()) {
             val position = iterator.next()
